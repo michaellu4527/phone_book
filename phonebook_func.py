@@ -16,25 +16,26 @@ import tkinter as tk
 from tkinter import messagebox
 import sqlite3
 
-# Be sure to import our other modules
-# so we can have access to them
+# Import custom modules
 import phone_book_main
 import phonebook_gui
 
 
-def center_window(self, w, h):  # pass in the tkinter frame (master) reference and the w and h
-    # get user's screen width and height
+def center_window(self, w, h):  # pass in the Tkinter frame (master) reference and the w and h
+    # Get user's screen width and height. Remember self.master references the main window
     screen_width = self.master.winfo_screenwidth()
     screen_height = self.master.winfo_screenheight()
-    # calculate x and y coordinates to paint the app centered on the user's screen
+    # Calculate x and y coordinates to paint the app centered on the user's screen
     x = int((screen_width / 2) - (w / 2))
     y = int((screen_height / 2) - (h / 2))
+    # Create actual coordinates needed to center app on screen
     centerGeo = self.master.geometry('{}x{}+{}+{}'.format(w, h, x, y))
     return centerGeo
 
 
-# catch if the user's clicks on the windows upper-right 'X' to ensure they want to close
+# Catch if the user's clicks on the windows upper-right 'X' to ensure they want to close
 def ask_quit(self):
+    # Double checks if user really wants to exit
     if messagebox.askokcancel("Exit program", "Okay to exit application?"):
         # This closes app
         self.master.destroy()
